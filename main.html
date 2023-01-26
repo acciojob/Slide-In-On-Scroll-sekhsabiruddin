@@ -1,3 +1,34 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@sekhsabiruddin 
+acciojob
+/
+Slide-In-On-Scroll-rohu0510
+Public
+generated from acciojob/Slide-In-On-Scroll
+Fork your own copy of acciojob/Slide-In-On-Scroll-rohu0510
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Slide-In-On-Scroll-rohu0510/main.html
+@rohu0510
+rohu0510 created a submission
+Latest commit 9f537ff yesterday
+ History
+ 2 contributors
+@rohu0510@acciojob
+157 lines (118 sloc)  14.4 KB
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,6 +88,40 @@
         if (callNow) func.apply(context, args);
       };
     }
+
+//answer by abhishek sir
+// const sliderImages = document.querySelectorAll('.slide-in')
+// for(let t of sliderImages){
+//   t.addEventListener("scroll",assignActive)
+// }
+// function assignActive(e){
+
+// }
+//    debounce(assignActive)
+
+
+
+//copied code
+const sliderImages = document.querySelectorAll(".slide-in");
+
+      function checkSlide() {
+        sliderImages.forEach((sliderImage) => {
+          // half way through the image
+          const slideInAt =
+            window.scrollY + window.innerHeight - sliderImage.height / 2;
+          // bottom of the image
+          const imageBottom = sliderImage.offsetTop + sliderImage.height;
+          const isHalfShown = slideInAt > sliderImage.offsetTop;
+          const isNotScrolledPast = window.scrollY < imageBottom;
+          if (isHalfShown && isNotScrolledPast) {
+            sliderImage.classList.add("active");
+          } else {
+            sliderImage.classList.remove("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", debounce(checkSlide));
 
   </script>
 
@@ -121,3 +186,18 @@
 
 </body>
 </html>
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Slide-In-On-Scroll-rohu0510/main.html at master · acciojob/Slide-In-On-Scroll-rohu0510
